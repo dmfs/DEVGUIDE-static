@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+    <title>iMIP</title>
+    <meta name="description" content="My modified template for CalConnect" />
+
+  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/materialize.css" />
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/main.css">
+    <link rel="canonical" href="/Scheduling/iMIP/" />
+    <link rel="alternate" type="application/rss+xml" title="CalConnect DEVGUIDE" href="/feed.xml" />
+  
+    
+</head>
+
+
+  <body>
+
+    <nav class="deep-purple lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" href="/">CalConnect Developer's Guide</a>
+    
+    
+
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home </a></li>
+            <li><a href="/Table-of-Contents/">Table of Contents</a></li>
+            <li><a href="/Appendix/How-to-Contribute/">How to Contribute</a></li>
+          </ul>
+
+          <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="/Table-of-Contents/">Table of Contents</a></li>
+            <li><a href="/Appendix/How-to-Contribute/">How to Contribute</a></li>
+          </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+
+
+        <div class="container">
+
+    <h1 id="imip---rfc-6047">iMIP - RFC 6047</h1>
+
+<p>This document is still incomplete.  It requires many more examples
+of what iMIP messages look like in different contexts.</p>
+
+<p>iMIP describe HOW <a href="../iTIP/">iTIP</a> messages are sent and received via email.</p>
+
+<p>iMIP is important to solve the “identity crisis” as it’s called
+within calendaring.  Many people have their calendar hosted on one
+service, but their email address hosted somewhere else.  The
+ATTENDEE and ORGANIZER components of an iCalendar scheduling resource
+are generally mailto: URIs, and are created by people adding addresses
+from their address book.</p>
+
+<p>The most interoperable way to ensure that an <a href="../iTIP/">iTIP</a> request reaches the
+owner of an email address is to attach it to an email and send it to that
+address.</p>
+
+<h2 id="description">description</h2>
+
+<p>An iMIP message is an email containing attached scheduling <a href="../iTIP/">iTIP</a> files.
+Each <a href="../iTIP/">iTIP</a> is an iCalendar format file with a METHOD property.</p>
+
+<p>We will ignore COUNTER and DECLINECOUNTER for this document, as they are
+poorly supported and not recommended.  Likewise REFRESH is not often seen
+in the wild.</p>
+
+<p>PUBLISH and ADD are used for events with an ORGANIZER but no explicit list
+of ATTENDEEs.  These are for publishing events, but have no facility to
+track who is coming.</p>
+
+<p>Which leaves us with REQUEST and REPLY, as well as CANCEL which is used for
+both published and requested events when the ORGANIZER is cancelling the
+event.</p>
+
+<p>REQUEST and CANCEL iMIP email messages are always sent from the ORGANIZER
+to ATTENDEEs, and REPLY is always from an ATTENDEE back to the ORGANIZER.</p>
+
+<h2 id="best-practices">best practices</h2>
+
+<p>Email messages may have more than a single iCalendar file attached, particular
+in the case of PUBLISH/REFRESH/ADD where a calendar file is being broadcast.
+As a processor of iMIP messages you may care about these things, but as a
+generator the best practice is to only attach a single iMIP file to each email.</p>
+
+<p>The recommended structure the email is as follows:</p>
+
+<ul>
+  <li>multipart/mixed
+    <ul>
+      <li>multipart/alternative
+        <ul>
+          <li>text/plain</li>
+          <li>text/html</li>
+          <li>text/calendar; method=REQUEST</li>
+        </ul>
+      </li>
+      <li>application/ics (with a content-disposition:attachment) BASE64</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This structure is based on interoperability testing with various existing
+implementations.  Some clients will only see the part with the standard
+text/calendar content-type and the method header.  Other clients are only
+able to attached parts with application/ics (which is non-standard)</p>
+
+<p>It is also recommended that the filename of the application/ics part end
+with <code class="highlighter-rouge">.ics</code>.</p>
+
+<p>Some vendors add links within the HTML part which can be used from
+non-calendaring-aware email clients to accept or decline a request
+without having to process the calendar parts at all.  The server just
+updates the ORGANIZER’s copy of the event based on the link clicked.</p>
+
+<p>An example of the whole RFC message is provided on <a href="https://github.com/CalConnect/DEVGUIDE-EXAMPLES/blob/master/imip/imip_example.txt">GitHub</a>.</p>
+
+<p>One useful practice is to set the ORGANIZER address to a per-event or
+per-calendar agent email address rather than the personal address of a
+human, while still adding the personal address of the ORGANIZER as one
+of the ATTENDEEs.  Particularly with a per-event address which is not
+easily guessable, the server can do more automated processing of
+incoming replies.</p>
+
+<h1 id="automatic-handling-of-incoming-imip-messages">automatic handling of incoming iMIP messages</h1>
+
+<p>To avoid spam automatically being added to calendars, it is recommended to
+provide some upfront checking of emails before blindly processing the
+attached calendar parts, for example checking if the sender email is in the
+recipient’s address book or if the UID of an incoming REPLY or REQUEST is
+already in the user’s calendar, implying that they created or have already
+accepted this event.</p>
+
+<h1 id="gotchas-and-things-to-be-aware-of">Gotchas and things to be aware of</h1>
+
+<p>If you’re writing a client which is talking CalDAV to a server there isn’t
+much to think about other than the being aware that if there is a
+SCHEDULE-AGENT attribute on your ATTENDEE and it’s not “SERVER” then the
+server won’t send out iMIP messages on your behalf.</p>
+
+<p>You also need to read enough of RFC6638 to know how you are legally allowed
+to modify a scheduling resource if you are not the ORGANIZER.  Section 2.4.1
+defines the CALDAV:calendar-user-address-set, which is the addresses which
+are “you” for the purpose of scheduling.  Generally it’s a set of one address,
+and most clients seem to only look for one.  So just use one!</p>
+
+<p>As an ATTENDEE, you can modify your own ATTENDEE property within the VEVENT
+and the server will send an iMIP REPLY to the ORGANIZER to update the master
+copy of the event.  Deleting your copy of the VEVENT will cause the server
+to send a REPLY with PARTSTAT=DECLINED, the same as declining the request.</p>
+
+<p>As a server author, things are much more complex.  Not only do you have to
+determine which attendee the client is when processing an update to a
+scheduling VEVENT via CalDAV, you then need to calculate the correct iMIP
+message to send.</p>
+
+<p>In particular, Section 3.2.6 ‘Restrict Recurrence Instances Sent to “Attendees”’
+means that the VEVENT will have to be rewritten depending on which attendee the
+iMIP message is being sent to.  It is easiest by far to send a separate email
+to each ATTENDEE.</p>
+
+<p>One of the most complex cases to handle, both as a sender and as a recipient of
+iMIP, is the case where an ATTENDEE is invited to only a single recurrence or
+(even more complex) to multiple single recurrences of a repeating event, but is
+not invited to the entire event.  In this case the ATTENDEE receives one or more
+VEVENTS with both a UID and a RECURRENCE-ID, but no VEVENT with just the UID.
+Handling these “naked” recurrences is a frequent source of bugs in implementations.</p>
+
+<h1 id="no-negotiation">No negotiation</h1>
+
+<p>iMIP via email provides no return channel other than sending a new iMIP back,
+so there’s no protocol negotiation.  All VEVENTs need to be lowest common
+denominator VERSION:2.0 ICALENDAR files complete with VTIMEZONEs for all
+mentioned timezone names.</p>
+
+
+</div>
+
+
+    <footer class="white">
+        <div class="container">
+            <div><hr/></div>
+            <div>
+            	Was this page helpful for you? Please give us <a href="https://goo.gl/forms/NqKna6d4lsqUtlgD3" class="text-lighten-3" target="_new">Feedback</a>.
+            </div>
+            <div><hr/></div>
+        </div>
+</footer>
+<footer class="page-footer deep-purple">
+    <div class="footer-copyright">
+        <div class="container">
+            <div>
+              <a href="https://www.calconnect.org/about/policies/copyright-licensing" class="deep-purple-text text-lighten-3">Copyright © The Calendaring and Scheduling Consortium</a>. The contents of this wiki are freely available licensed via a <a href="http://creativecommons.org/licenses/by/3.0/" class="deep-purple-text text-lighten-3">Creative Commons Attribution 3.0 Unported License</a>.
+            </div>
+        </div>
+    </div>
+</footer>
+
+      
+    <!--  Scripts-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+<script src="/js/init.js"></script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-22761082-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- /Analytics -->
+
+
+  </body>
+
+</html>

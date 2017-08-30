@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+    <title>A History of iCalendar</title>
+    <meta name="description" content="My modified template for CalConnect" />
+
+  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/materialize.css" />
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/main.css">
+    <link rel="canonical" href="/History/" />
+    <link rel="alternate" type="application/rss+xml" title="CalConnect DEVGUIDE" href="/feed.xml" />
+  
+    
+</head>
+
+
+  <body>
+
+    <nav class="deep-purple lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" href="/">CalConnect Developer's Guide</a>
+    
+    
+
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home </a></li>
+            <li><a href="/Table-of-Contents/">Table of Contents</a></li>
+            <li><a href="/Appendix/How-to-Contribute/">How to Contribute</a></li>
+          </ul>
+
+          <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="/Table-of-Contents/">Table of Contents</a></li>
+            <li><a href="/Appendix/How-to-Contribute/">How to Contribute</a></li>
+          </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+
+
+        <div class="container">
+
+    <h1 id="a-history-of-icalendar">A History of iCalendar</h1>
+
+<p>The iCalendar data format provides a way to represent and
+exchange calendaring and scheduling information such as events,
+to-dos, journal entries, and free/busy information, independent of any
+particular calendar service or protocol.</p>
+
+<p>The iCalendar specification was first produced by the <a href="https://ietf.org">IETF</a> in 1998 as <a href="https://tools.ietf.org/html/rfc2445">RFC 2445</a>. Since then it has become the dominant standard for calendar data interchange on the internet and between devices (desktop computers, mobile phones, etc). The specification was revised in 2009 as <a href="https://tools.ietf.org/html/rfc5545">RFC 5545</a>.</p>
+
+<p>Alongside iCalendar is the iTIP specification (<a href="https://tools.ietf.org/html/rfc2446">RFC 2446</a> and revised as <a href="https://tools.ietf.org/html/rfc5546">RFC 5546</a>). iTIP defines how iCalendar is used to carry out scheduling operations (for example, how an organizer can invite attendees to a meeting and receive their replies). This forms the basis for email-based scheduling using iMIP (the specification that describes how to use iTIP with email - <a href="https://tools.ietf.org/html/rfc2447">RFC 2447</a> and revised as <a href="https://tools.ietf.org/html/rfc6047">RFC 6047</a>).</p>
+
+<p>iCalendar itself is a text-based data format. However, both XML <a href="https://tools.ietf.org/html/rfc6321">RFC 6321</a> and JSON <a href="https://tools.ietf.org/html/rfc7265">RFC 7265</a> formats are available, providing a one-to-one mapping to the text format.</p>
+
+<p>iCalendar data files typically have a .ics file name extension. Most desktop calendar clients can import or export iCalendar data, or directly access such data over the Internet using a variety of protocols.</p>
+
+<p>iCalendar is typically identified by the MIME media type “text/calendar”, or “application/calendar+xml” for the XML syntax, or “application/calendar+json” for the JSON syntax.</p>
+
+
+</div>
+
+
+    <footer class="white">
+        <div class="container">
+            <div><hr/></div>
+            <div>
+            	Was this page helpful for you? Please give us <a href="https://goo.gl/forms/NqKna6d4lsqUtlgD3" class="text-lighten-3" target="_new">Feedback</a>.
+            </div>
+            <div><hr/></div>
+        </div>
+</footer>
+<footer class="page-footer deep-purple">
+    <div class="footer-copyright">
+        <div class="container">
+            <div>
+              <a href="https://www.calconnect.org/about/policies/copyright-licensing" class="deep-purple-text text-lighten-3">Copyright © The Calendaring and Scheduling Consortium</a>. The contents of this wiki are freely available licensed via a <a href="http://creativecommons.org/licenses/by/3.0/" class="deep-purple-text text-lighten-3">Creative Commons Attribution 3.0 Unported License</a>.
+            </div>
+        </div>
+    </div>
+</footer>
+
+      
+    <!--  Scripts-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+<script src="/js/init.js"></script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-22761082-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- /Analytics -->
+
+
+  </body>
+
+</html>

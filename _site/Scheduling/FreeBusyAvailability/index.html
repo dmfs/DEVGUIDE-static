@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+    <title>FreeBusy and Availability</title>
+    <meta name="description" content="My modified template for CalConnect" />
+
+  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/materialize.css" />
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/main.css">
+    <link rel="canonical" href="/Scheduling/FreeBusyAvailability/" />
+    <link rel="alternate" type="application/rss+xml" title="CalConnect DEVGUIDE" href="/feed.xml" />
+  
+    
+</head>
+
+
+  <body>
+
+    <nav class="deep-purple lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" href="/">CalConnect Developer's Guide</a>
+    
+    
+
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home </a></li>
+            <li><a href="/Table-of-Contents/">Table of Contents</a></li>
+            <li><a href="/Appendix/How-to-Contribute/">How to Contribute</a></li>
+          </ul>
+
+          <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="/Table-of-Contents/">Table of Contents</a></li>
+            <li><a href="/Appendix/How-to-Contribute/">How to Contribute</a></li>
+          </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+
+
+        <div class="container">
+
+    <h1 id="freebusy-and-availability">FreeBusy and Availability</h1>
+<p>The problem we are generally trying to address here is the answer to a question posed to  group of people and resources:</p>
+
+<ul>
+  <li>When can we have this meeting?</li>
+</ul>
+
+<p>This is often the hardest part of putting together a meeting. Here we describe some of the concepts, why what we think might work in fact doesn’t and provide some links to possible solutions.</p>
+
+<h2 id="freebusy">Freebusy</h2>
+<p>FreeBusy is a report on the free and busy times of a person or sometimes a resource, such as a room. The is the ‘traditional’ approach to scheduling a meeting goes something like:</p>
+
+<ol>
+  <li>Get a freebusy report for each potential attendee (and room)</li>
+  <li>Select a time when enough attendees are free</li>
+  <li>Send an invitation to the attendees</li>
+  <li>Get some responses back</li>
+  <li>Call, email or otherwise harass the attendees that didn’t answer</li>
+  <li>Pick another time and repeat.</li>
+</ol>
+
+<p>This approach to putting together a meeting has been shown to be inordinately expensive. Numbers between 18 and 21 work hours have been reported for moderately sized meetings. This was the incentive behind our collaboration with Boeing on the FreeBusy aggregator project. (More on that <a href="#Aggregator">below.</a>)</p>
+
+<p>In some environments, with appropriate constraints, this approach may work. It requires the following:</p>
+
+<ul>
+  <li>Potential attendees must have up-to-date and visible calendars for the potential meeting times</li>
+  <li>They need to respond in a timely manner to those meeting requests</li>
+  <li>More often than not they should accept</li>
+</ul>
+
+<p>This may be the case in a corporate environment with fairly fixed work hours or where the work calendar overrides other (personal) calendars. It did not work for Boeing and generally will not work in a more relaxed environment.</p>
+
+<p>Some of the factors that prevent freebusy from working are:</p>
+
+<ul>
+  <li>Potential attendees don’t maintain their calendars
+Many people are very relaxed about maintaining their calendars</li>
+  <li>Their calendars aren’t available.
+Some work environments explicitly prohibit users from exporting calendar data outside of the work environment.</li>
+  <li>Busy people are 100% busy</li>
+</ul>
+
+<h2 id="availability">Availability</h2>
+<p>Availability flips the problem around. Instead of asking a potential attendee when they are free then making a decision we instead ask them when they are available. We can also provide some context, e.g. location and the response can indicate a set of times when they might attend. This has some benefits:</p>
+
+<ul>
+  <li>They don’t have to have a free slot - they’re saying they’re prepared to move some other meeting</li>
+  <li>They don’t have to reveal anything about their schedule - that might be privileged information</li>
+</ul>
+
+<p>The <a href="../vavailability/">VAVAILABILITY</a> specification standardizes this and also allows for many other capabilities. Apart from being a way to respond with available time it has uses within the SmartGrid and for VPOLL.</p>
+
+<p>VAVAILABILITY was originally defined in answer to a Office Hours problem. This was the need by many universities to:</p>
+<ul>
+  <li>define the hours when faculty could meet with students and</li>
+  <li>allow those students to book time and</li>
+  <li>have it appear in the faculty calendar</li>
+</ul>
+
+<p>CalConnect was asked if there was a standards based solution to that so we invented one. The term “Office Hours” has caused much confusion as the component can also be used to specify your working day.</p>
+
+<h2 id="some-solutions">Some solutions</h2>
+<p>There are many solutions to the problem - at least partial. Web services have sprung up - such as Doodle (name others) - which take the approach of presenting choices to the potential attendees and having them rate them.</p>
+
+<p>CalConnect has given this approach a name - Consensus Scheduling. This approach has many advantages:</p>
+
+<ul>
+  <li>Does not require the participants to reveal anything beyond acceptance or rejection</li>
+  <li>Peer pressure often leads to a quick solution - participants can see what others are moving towards</li>
+</ul>
+
+<p>The end result of most of these services is an iTip request sent via iMip which now has a high acceptance rate.</p>
+
+<h4 id="Aggregator">The Boeing/CalConnect FreeBusy aggregator</h4>
+
+<h5 id="the-problem">The problem</h5>
+<p>With the development of the DreamLiner Boeing took a different approach of contracting out the building of most of the components to outside contractors with the aircraft being assembled by Boeing.Among the problems this caused them was that of trying to put together very many meetings with those contractors around the world.</p>
+
+<p>Their own research showed them it was taking and average of 21 hours of work just to get each meeting organized. Somebody felt this could not be a true figure, tried an emulation - not involving timezones and came up with 18 hours. The Belgian government also came up with a similar number. (References needed)</p>
+
+<h5 id="the-attempted-solution">The attempted solution</h5>
+<p>A proof of concept was put together to try to resolve the issue Boeing faced - and within it’s constraints was successful.</p>
+
+<p>Each potential attendee was supposed to register with a central service. That service would have access to their freebusy. This would allow somebody to query the service for a set of attendees, determine the optimal time and book the meeting.</p>
+
+<p>A number of connectors to popular systems were developed and a subset of CalDAV was used to allow FreeBusy reports for registered users.</p>
+
+<p>This was demonstrated at the Open Group meeting in Miami in (?) and that’s where it stayed.</p>
+
+<h5 id="why-would-it-not-work">Why would it not work?</h5>
+<p>One of the assumptions was that we would be able to get the individuals freebusy. Even though the connector could probably provide some degree of security, contractors probably didn’t want to hand out their freebusy anyway. Sudden busy periods alone may provide useful information to competitors. In the airline industry many of those contractors work on the Airbus and others.</p>
+
+
+</div>
+
+
+    <footer class="white">
+        <div class="container">
+            <div><hr/></div>
+            <div>
+            	Was this page helpful for you? Please give us <a href="https://goo.gl/forms/NqKna6d4lsqUtlgD3" class="text-lighten-3" target="_new">Feedback</a>.
+            </div>
+            <div><hr/></div>
+        </div>
+</footer>
+<footer class="page-footer deep-purple">
+    <div class="footer-copyright">
+        <div class="container">
+            <div>
+              <a href="https://www.calconnect.org/about/policies/copyright-licensing" class="deep-purple-text text-lighten-3">Copyright © The Calendaring and Scheduling Consortium</a>. The contents of this wiki are freely available licensed via a <a href="http://creativecommons.org/licenses/by/3.0/" class="deep-purple-text text-lighten-3">Creative Commons Attribution 3.0 Unported License</a>.
+            </div>
+        </div>
+    </div>
+</footer>
+
+      
+    <!--  Scripts-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+<script src="/js/init.js"></script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-22761082-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- /Analytics -->
+
+
+  </body>
+
+</html>

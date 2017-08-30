@@ -1,0 +1,10 @@
+title: CalConnect DEVGUIDE
+author: Thomas Schäfer
+email: wsdwl@web.de
+description: > # this means to ignore newlines until "baseurl:"
+  My modified template for CalConnect
+
+twitter_username: wsdwl
+
+sass:
+    style: compressed
