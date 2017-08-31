@@ -6,7 +6,7 @@ permalink: /Appendix/How-to-Contribute/
 
 # How to Contribute to this Document
 
-This Wiki is based on [Gollum](https://github.com/gollum/gollum), a [Git](http://git-scm.com/) based Wiki system. The markup language used is [Markdown](http://daringfireball.net/projects/markdown/syntax) in the [Github flavored](https://help.github.com/articles/github-flavored-markdown/) version.
+This site has been made with [Jekyll](https://jekyllrb.com/), a [Git](http://git-scm.com/) based content to html converter. The markup language used is [Markdown](http://daringfireball.net/projects/markdown/syntax) in the [Github flavored](https://help.github.com/articles/github-flavored-markdown/) version.
 
 [devguide.calconnect.org](http://devguide.calconnect.org) only serves the Wiki content, without any option to edit it. The sources of this Wiki are available at [github.com/CalConnect/DEVGUIDE](https://github.com/CalConnect/DEVGUIDE). All changes at GitHub will be pushed to http://devguide.calconnect.org on a regular base. At present this is a manual process, so it might take some time.
 
@@ -24,7 +24,7 @@ The sources of this Wiki are available on GitHub. [DEVGUIDE](https://github.com/
 
 Contributors who are familiar with Markdown and Git may also send a pull request.
 
-Note that this Wiki uses custom templates and css that are not available on GitHub, which means that the presentation on GitHub will be different from the presentation on http://devguide.calconnect.org
+Note that this Wiki uses custom templates and css that are not available on GitHub, which means that the presentation on GitHub will be different from the presentation on [http://devguide.calconnect.org](http://devguide.calconnect.org)
 
 To give the Wiki a consistent appearance, please follow the rules below:
 
