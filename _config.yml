@@ -8,3 +8,9 @@ twitter_username: wsdwl
 
 sass:
     style: compressed
+
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
