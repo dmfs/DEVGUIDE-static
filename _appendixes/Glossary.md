@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Glossary of Terms
+order: 1
 ---
 
 # Calendaring and Scheduling Glossary of Terms

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: How to Contribute
+order: 5
 ---
 
 # How to Contribute to this Document

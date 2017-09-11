@@ -14,3 +14,7 @@ collections:
   pages:
     output: true
     permalink: /:path/
+
+  appendixes:
+    output: true
+    permalink: /Appendix/:path/

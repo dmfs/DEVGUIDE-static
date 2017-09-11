@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Standards
+order: 2
 ---
 
 # The standards 

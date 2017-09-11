@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Examples
+order: 3
 ---
 
 # Examples 

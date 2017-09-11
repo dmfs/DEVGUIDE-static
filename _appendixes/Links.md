@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Links
+title: Links to other interesting sites
+order: 4
 ---
 
 
