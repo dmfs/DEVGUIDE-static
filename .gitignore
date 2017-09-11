@@ -1,5 +1,6 @@
 # ignore build site
-_site
+/_site
 # ignore cache files
 .sass_cache
 *.scssc
+/_plantuml
