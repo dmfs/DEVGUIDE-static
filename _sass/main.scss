@@ -1,7 +1,29 @@
 @charset "utf-8";
 
+body {
+  font-family:'Ek Mukta',Arial,Helvetica,sans-serif;font-weight:300;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+h2 {
+    border-bottom: 1px solid lightgrey
+}
+
 h1, h2, h3, h4, h5, h6 {
     -webkit-font-smoothing: antialiased;
+    font-family: 'Hind', sans-serif;
 }
 .icon-block {
   padding: 0 15px;
