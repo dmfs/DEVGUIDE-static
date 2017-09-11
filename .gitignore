@@ -3,4 +3,4 @@
 # ignore cache files
 .sass_cache
 *.scssc
-/_plantuml
+/uml
