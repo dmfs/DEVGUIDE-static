@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Validation
+parent: "/"
+order: 3
 ---
 
 # Validation

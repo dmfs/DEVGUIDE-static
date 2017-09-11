@@ -1,6 +1,8 @@
 ---
 layout: page
-title: Creating Simple Events
+title: UID
+parent: "/Data-Model/Data-Model"
+order: 2
 ---
 
 # What is UID?

@@ -1,6 +1,8 @@
 ---
 layout: page
 title: iCalendar Data Model
+parent: "/iCalendar-Topics"
+order: 2
 ---
 
 # iCalendar Data Model

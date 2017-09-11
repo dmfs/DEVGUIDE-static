@@ -1,5 +1,9 @@
 ---
+title: Introduction
 layout: page
+permalink: /
+parent: "/"
+order: 1
 ---
 
 # Introduction #

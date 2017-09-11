@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Creating Simple Events
+parent: "/Data-Model/Data-Model"
+order: 1
 ---
 
 # Creating Simple Events

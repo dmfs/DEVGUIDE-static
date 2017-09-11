@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Recurrences
+parent: "/iCalendar-Topics"
+order: 4
 ---
 
 # iCalendar Recurrences

@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Best practices
+parent: /Time-Zones/Time-Zones
+order: 1
 ---
 
 # Best practices 

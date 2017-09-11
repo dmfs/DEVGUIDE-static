@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Time Zones
+parent: "/iCalendar-Topics"
+order: 5
 ---
 
 # iCalendar Time Zones

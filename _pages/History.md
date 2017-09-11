@@ -1,6 +1,8 @@
 ---
 layout: page
 title: A History of iCalendar
+parent: "/iCalendar-Topics"
+order: 1
 ---
 
 # A History of iCalendar

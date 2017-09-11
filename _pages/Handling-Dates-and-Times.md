@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Handling Dates and Times
+parent: "/iCalendar-Topics"
+order: 3
 ---
 
 # Dates importance in calendar components
