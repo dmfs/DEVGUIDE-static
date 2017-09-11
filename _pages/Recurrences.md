@@ -11,7 +11,7 @@ order: 4
 
 A recurring event is one that repeats at regular or irregular intervals. For example, a weekly lunch meeting, an anniversary, etc. These often occur in real life and thus need to be represented in digital calendars and iCalendar. Recurring events are often the source of interoperability problems with iCalendar, so deserve special attention.
 
-@startuml
+{% plantuml %}
 skinparam object {
 ArrowColor RoyalBlue
 BorderColor RoyalBlue
@@ -24,7 +24,7 @@ object "Recurrence <n>" as rn
 
 r1 -right-> r2
 r2 -right-> rn 
-@enduml
+{% endplantuml %}
 
 In the real world, a recurrence pattern is typically based on common intervals of time (a day, a week, a month, a year, etc). Often times, a recurrence is not every week, but every other week, for example. So there needs to be a way to express an interval between each recurrence. Some types of recurrence never end - typically anniversaries, though often it is because no obvious end point can be identified. In other cases there is a well-known end point, determined either by the total number of recurrences (e.g., every day for the next three days), or a fixed end date (e.g., every week until the end of the month).
 
@@ -76,7 +76,7 @@ END:VEVENT
 END:VCALENDAR
 ```
 
-@startuml
+{% plantuml %}
 skinparam object {
 ArrowColor RoyalBlue
 BorderColor RoyalBlue
@@ -100,7 +100,7 @@ object "Recurrence 3“ as r3 {
 
 r1 -right-> r2
 r2 -right-> r3 
-@enduml
+{% endplantuml %}
 
 To fully understand all the possible variations of **`RRULE`** values, and possible patterns that can be generated, you need to read the [iCalendar specification](https://tools.ietf.org/html/rfc5545), in particular Sections [3.3.10](https://tools.ietf.org/html/rfc5545#section-3.3.10) & [3.8.5.3](https://tools.ietf.org/html/rfc5545#section-3.8.5.3)
 
@@ -127,7 +127,7 @@ END:VEVENT
 END:VCALENDAR
 </code></pre>
 
-@startuml
+{% plantuml %}
 skinparam object {
 ArrowColor RoyalBlue
 BorderColor RoyalBlue
@@ -148,7 +148,7 @@ object "Recurrence 3“ as r3 {
 }
 
 r1 -right-> r3
-@enduml
+{% endplantuml %}
 
 
 ### *Overridden Instances*
