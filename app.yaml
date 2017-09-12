@@ -3,7 +3,7 @@ api_version: 1
 threadsafe: true
 application: calconnect-devguide
 version: 1
-
+default_expiration: "1m"
 
 handlers:
 - url: /(.+)/
