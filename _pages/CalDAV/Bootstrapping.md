@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Bootstrapping
+parent: "/CalDAV/Client"
+order: 2
 ---
 
 ## How to discover and load calendar content given a user address

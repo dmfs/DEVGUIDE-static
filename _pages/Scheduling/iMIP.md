@@ -1,6 +1,8 @@
 ---
 layout: page
 title: iMIP
+parent: /Scheduling/Scheduling
+order: 2
 ---
 
 # iMIP - RFC 6047

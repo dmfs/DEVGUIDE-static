@@ -1,6 +1,8 @@
 ---
 layout: page
 title: CalDAV server implementations
+parent: "/CalDAV/Server"
+order: 1
 ---
 
 # CalDAV server implementation

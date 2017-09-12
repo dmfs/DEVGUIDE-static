@@ -1,6 +1,8 @@
 ---
 layout: page
 title: CardDAV client implementations
+parent: "/CardDAV/Client"
+order: 1
 ---
 
 # CardDAV client implementations

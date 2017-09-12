@@ -1,6 +1,8 @@
 ---
 layout: page
 title: CardDAV libraries
+parent: "/CardDAV"
+order: 3
 ---
 
 # CardDAV libraries

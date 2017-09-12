@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Introduction
+parent: "/CalDAV"
+order: 1
 ---
 
 # CalDAV - introduction

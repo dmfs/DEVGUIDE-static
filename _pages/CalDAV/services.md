@@ -1,6 +1,8 @@
 ---
 layout: page
 title: CalDAV services
+parent: "/CalDAV"
+order: 5
 ---
 
 # CalDAV services

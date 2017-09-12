@@ -1,6 +1,8 @@
 ---
 layout: page
 title: vCard 4.0
+parent: "/vCard-Topics"
+order: 2
 ---
 
 # vCard 4.0

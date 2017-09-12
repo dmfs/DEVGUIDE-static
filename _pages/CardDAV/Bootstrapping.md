@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Bootstrapping
+parent: "/CardDAV/Client"
+order: 2
 ---
 
 ## How to discover and load address book contents given a user address

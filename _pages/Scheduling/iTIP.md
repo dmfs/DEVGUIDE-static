@@ -1,6 +1,8 @@
 ---
 layout: page
 title: iTIP
+parent: /Scheduling/Scheduling
+order: 1
 ---
 
 # iTIP - RFC 5546

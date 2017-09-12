@@ -1,6 +1,8 @@
 ---
 layout: page
-title: CardDAV client implementations
+title: CalDAV client implementations
+parent: "/CalDAV/Client"
+order: 1
 ---
 
 # CalDAV client implementations

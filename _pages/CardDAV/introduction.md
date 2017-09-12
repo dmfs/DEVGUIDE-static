@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Introduction
+parent: "/CardDAV"
+order: 1
 ---
 
 # Introduction

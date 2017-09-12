@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Introduction
+parent: "/vCard-Topics"
+order: 1
 ---
 
 # Introducing the vCard standard

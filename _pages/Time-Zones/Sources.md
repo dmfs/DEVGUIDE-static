@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Sources of Time Zone Information
+parent: /Time-Zones/Time-Zones
+order: 2
 ---
 
 # Sources of Time Zone Information

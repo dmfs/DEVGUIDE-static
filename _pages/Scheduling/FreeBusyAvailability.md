@@ -1,6 +1,8 @@
 ---
 layout: page
 title: FreeBusy and Availability
+parent: /Scheduling/Scheduling
+order: 3
 ---
 
 # FreeBusy and Availability

@@ -1,6 +1,8 @@
 ---
 layout: page
 title: CardDAV services
+parent: "/CardDAV"
+order: 5
 ---
 
 # CardDAV services

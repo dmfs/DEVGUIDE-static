@@ -1,6 +1,8 @@
 ---
 layout: page
 title: CalDAV libraries
+parent: "/CalDAV"
+order: 4
 ---
 
 # CalDAV libraries
