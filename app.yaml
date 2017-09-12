@@ -1,0 +1,27 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+application: calconnect-devguide
+version: 1
+
+
+handlers:
+- url: /(.+)/
+  static_files: _site/\1/index.html
+  upload: _site/(.+)/index.html
+
+# site root
+- url: /
+  static_files: _site/index.html
+  upload: _site/index.html
+
+# For folders without trailing slashes - ideally a 301 redirect, but we're static & it isn't 2004
+- url: /([^\.]+)([^/])
+  static_files: _site/\1\2/index.html
+  upload: _site/(.+)
+
+# Redirect Everything else
+- url: /(.+)
+  static_files: _site/\1
+  upload: _site/(.+)
+
